@@ -1,0 +1,138 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/layered-waves-haikei.svg');
+    height: 100vh;
+    font-family: 'Muli', sans-serif;
+}
+
+.contenedorImagen{
+    width: 450px; padding: 15px;
+    height: 200px;
+}
+
+.contenedorImagen img{
+    height: 100px;
+    background: rgba(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.formulario{
+    width: 320px;
+    border-radius: 20px;
+    background: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.formulario img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: white;
+    
+    top: -50px;
+    left: calc(50% - 50px);
+}
+
+.formulario h1{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 34px;
+    padding-bottom: 30px;
+    color: #E40C7B;
+    font-weight: bold;
+    
+}
+
+.formulario label{
+    margin: 0; 
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    color: #04547f;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.formulario label i{
+    font-size: 18px;
+}
+
+#pContra::placeholder,
+#pUsuario::placeholder{
+    color: #5F90C9;
+}
+.formulario input{
+    width: 100%;
+    margin-bottom: 20px;
+    
+}
+
+.formulario input[type="text"],
+.formulario input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #04547f;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #5F90C9;
+    font-size: 14px;
+}
+
+.formulario input[type="submit"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #E40C7B;
+    color: white;
+    font-size: 16px;
+    border-radius: 20px;
+}
+
+.formulario input[type="submit"]:hover{
+    color: lightgray
+}
+
+.formulario a{
+    
+    font-size: 14px;
+    line-height: 20px;
+    color: #04547f;
+    text-decoration: none;
+}
+
+.formulario a:hover{
+    color: #5F90C9;
+}
+
+.referencias{
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+@media (max-width: 1050px) {
+    .contenedorImagen{
+        margin-bottom: 100px;
+        width: 100%;
+    }
+
+    .formulario{
+        position: static;
+        transform: translate(0%,0%);
+        margin: auto;
+    }
+}
