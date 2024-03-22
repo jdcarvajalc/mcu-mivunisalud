@@ -32,6 +32,10 @@
 
     var layout = generarLayoutDiarias("GRÁFICAS DIARIAS TEMPERATURA", "TEMPERATURA [ °C ]", [5, 35])
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b20ca198485a7f76d5a6724527f78182949e4482
     var config = {responsive: true};
 
     Plotly.newPlot('cargaLineal', data,layout,config);
