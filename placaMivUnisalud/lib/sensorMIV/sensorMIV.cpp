@@ -54,6 +54,8 @@ float calcularPromedio(float suma, float cantidadNumeros){
 void capturarYGestionarDatos(){
     promedioTemperatura = 0.0;
     promedioHumedad = 0.0;
+    float lecturasTemp[11];
+    float lecturasHum[11];
     float sumaTemp = 0.0, sumaHum = 0.0;
     int contadorLecturas = 0;
 
@@ -62,12 +64,23 @@ void capturarYGestionarDatos(){
         float temp = leerTemperatura();
         float hum = leerHumedad();
 
-        // Validar valores nulos y ceros
-        if (!isnan(temp) && !isnan(hum) && (temp!=0) && (hum!=0)) {
-            sumaTemp += temp;
-            sumaHum += hum;
-            contadorLecturas++;
-        }
+        // // Validar valores nulos y ceros
+        // if (!isnan(temp) && !isnan(hum) && (temp!=0) && (hum!=0)) {
+        //   sumaTemp += temp;
+        //   sumaHum += hum;
+        //   lecturasTemp[i] = temp;
+        //   lecturasHum[i] = hum; 
+        //   for (int j = 0; i < sizeof(lecturasTemp); i++)
+        //   {
+        //     if(8 < lecturasTemp[j] < 30){
+              
+        //       contadorLecturas++;
+        //     }  
+            
+            
+        //   }
+          
+        // }
 
         delay(1000); // 1 segundo entre lecturas
     }

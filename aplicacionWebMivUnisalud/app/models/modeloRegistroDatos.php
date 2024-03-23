@@ -1,6 +1,7 @@
 <?php
     require_once '../app/config/config.php';
 
+    // No olvidar agregar ubicación e ID de dispositivo
     $temp = $_POST ['temp'];
     $hum = $_POST ['hum'];
     $date = $_POST ['date'];
