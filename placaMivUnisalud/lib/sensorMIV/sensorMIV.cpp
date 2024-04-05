@@ -52,33 +52,40 @@ float calcularPromedio(float suma, float cantidadNumeros){
 * sistema: captura y gestión de datos. 
 */
 void capturarYGestionarDatos(){
-    promedioTemperatura = 0.0;
-    promedioHumedad = 0.0;
-    float sumaTemp = 0.0, sumaHum = 0.0;
-    int contadorLecturas = 0;
+  promedioTemperatura = 0.0;
+  promedioHumedad = 0.0;
+  float sumaTemp = 0.0, sumaHum = 0.0;
+  int contadorLecturas = 101;
 
-    // Leer 11 veces la temperatura y humedad
-    for( int i = 0; i < 11; i++ ){
-        float temp = leerTemperatura();
-        float hum = leerHumedad();
+  // Leer 101 veces la temperatura y humedad
+  for( int i = 0; i < contadorLecturas; i++ ){
+    float temp = leerTemperatura();
+    float hum = leerHumedad();
 
-        // Validar valores nulos y ceros
-        if (!isnan(temp) && !isnan(hum) && (temp!=0) && (hum!=0)) {
-            sumaTemp += temp;
-            sumaHum += hum;
-            contadorLecturas++;
-        }
-
-        delay(1000); // 1 segundo entre lecturas
+    // Validar valores nulos y ceros
+    if (!isnan(temp) && !isnan(hum) && (temp!=0) && (hum!=0)) {
+      sumaTemp += temp;
+      sumaHum += hum;
+      // Serial.print("T=");
+      // Serial.print(temp);
+      // Serial.print("\t");
+      // Serial.print("H=");
+      // Serial.println(hum);
+      delay(99); // 99 ms entre lecturas
     }
+    else{
+      i--;
+      delay(16); // Si hay un error se espera el tiempo de medición del datasheet antes de intentarlo otra vez
+    }   
+  }
 
-    // Calcular promedios
-    promedioTemperatura = calcularPromedio(sumaTemp, contadorLecturas);
-    promedioHumedad = calcularPromedio(sumaHum, contadorLecturas);
+  // Calcular promedios
+  promedioTemperatura = calcularPromedio(sumaTemp, contadorLecturas);
+  promedioHumedad = calcularPromedio(sumaHum, contadorLecturas);
 
-    Serial.print("Promedio Temperatura: ");
-    Serial.println(promedioTemperatura);
-    Serial.print("Promedio Humedad: ");
-    Serial.println(promedioHumedad);
+  Serial.print("Promedio Temperatura: ");
+  Serial.println(promedioTemperatura);
+  Serial.print("Promedio Humedad: ");
+  Serial.println(promedioHumedad);
 }
 // ****************************************************************************************
