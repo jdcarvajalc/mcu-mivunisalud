@@ -56,6 +56,9 @@ void capturarYGestionarDatos(){
   promedioHumedad = 0.0;
   float sumaTemp = 0.0, sumaHum = 0.0;
   int contadorLecturas = 101;
+  unsigned long tiempo1, tiempo2, transcurrido;
+
+  tiempo1 = millis();
 
   // Leer 101 veces la temperatura y humedad
   for( int i = 0; i < contadorLecturas; i++ ){
@@ -66,19 +69,12 @@ void capturarYGestionarDatos(){
     if (!isnan(temp) && !isnan(hum) && (temp!=0) && (hum!=0)) {
       sumaTemp += temp;
       sumaHum += hum;
-      // Serial.print("T=");
-      // Serial.print(temp);
-      // Serial.print("\t");
-      // Serial.print("H=");
-      // Serial.println(hum);
-      delay(99); // 99 ms entre lecturas
     }
     else{
       i--;
-      delay(16); // Si hay un error se espera el tiempo de medición del datasheet antes de intentarlo otra vez
     }   
   }
-
+  tiempo2 = millis();
   // Calcular promedios
   promedioTemperatura = calcularPromedio(sumaTemp, contadorLecturas);
   promedioHumedad = calcularPromedio(sumaHum, contadorLecturas);
@@ -87,5 +83,8 @@ void capturarYGestionarDatos(){
   Serial.println(promedioTemperatura);
   Serial.print("Promedio Humedad: ");
   Serial.println(promedioHumedad);
+  Serial.print("Tiempo  de Captura [ms]: ");
+  transcurrido = tiempo2 - tiempo1;
+  Serial.println(transcurrido);
 }
 // ****************************************************************************************
