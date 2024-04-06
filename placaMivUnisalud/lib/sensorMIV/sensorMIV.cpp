@@ -38,8 +38,8 @@ float leerHumedad() {
 * @brief Calcula el promedio de temperatura y humedad a partir de múltiples lecturas
 * del sensor y actualiza las variables globales promedioTemperatura y promedioHumedad.
 * 
-* @param [in] suma Suma del conjunto de números
-* @param [in] cantidadNumeros Cantidad de números en el conjunto
+* @param [in] suma: Suma del conjunto de números
+* @param [in] cantidadNumeros: Cantidad de números en el conjunto
 * 
 * @return El promedio del conjunto de números
 */
@@ -56,9 +56,6 @@ void capturarYGestionarDatos(){
   promedioHumedad = 0.0;
   float sumaTemp = 0.0, sumaHum = 0.0;
   int contadorLecturas = 101;
-  unsigned long tiempo1, tiempo2, transcurrido;
-
-  tiempo1 = millis();
 
   // Leer 101 veces la temperatura y humedad
   for( int i = 0; i < contadorLecturas; i++ ){
@@ -74,17 +71,9 @@ void capturarYGestionarDatos(){
       i--;
     }   
   }
-  tiempo2 = millis();
+
   // Calcular promedios
   promedioTemperatura = calcularPromedio(sumaTemp, contadorLecturas);
   promedioHumedad = calcularPromedio(sumaHum, contadorLecturas);
-
-  Serial.print("Promedio Temperatura: ");
-  Serial.println(promedioTemperatura);
-  Serial.print("Promedio Humedad: ");
-  Serial.println(promedioHumedad);
-  Serial.print("Tiempo  de Captura [ms]: ");
-  transcurrido = tiempo2 - tiempo1;
-  Serial.println(transcurrido);
 }
 // ****************************************************************************************
