@@ -69,43 +69,28 @@ extern void enviarMensaje(String mensaje){
  * @return La URL de los datos.
  */
 String construirURLDatos() {
-  String date = rtc.getTime("%Y/%m/%d");
-  String timestamp = rtc.getTime("%H:%M:%S");
   String urlDatos = "temp=" + String(promedioTemperatura) + "&hum=" + String(promedioHumedad) + "&date=" + date + "&timestamp=" + timestamp;
   return urlDatos;
 }
 // ****************************************************************************************
-/**
-* @brief Esta función transmite
-* 
-* @return Bandera de confirmación de transmisión
-*/
-extern boolean transmitirDatos(){
+extern void transmitirDatos(){
     String data = construirURLDatos();
-    if(WiFi.status() == WL_CONNECTED){
-        WiFiClientSecure *client = new WiFiClientSecure;
-        client -> setInsecure();
-        HTTPClient https;
 
-        https.begin(*client, serverURL);
+    WiFiClientSecure *client = new WiFiClientSecure;
+    client -> setInsecure();
+    HTTPClient https;
 
-        https.addHeader("Content-Type", "application/x-www-form-urlencoded");
+    https.begin(*client, serverURL);
 
-        // Enviar petición HTTPS de tipo POST
-        int httpResponseCode = https.POST(data);
+    https.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-        if (httpResponseCode == 200) {
-            return true;
-        }
-        else {
-            return false;
-        }
-        // Liberar recursos
-        https.end();
-        
+    // Enviar petición HTTPS de tipo POST
+    int httpResponseCode = https.POST(data);
+
+    if (httpResponseCode != 200) {
+        //TODO: función en sd que almacene las veces que no ha sido exitoso el envío
     }
-    else {
-        return false;
-    }
+    // Liberar recursos
+    https.end();
 }
 // ****************************************************************************************

@@ -13,7 +13,16 @@ void setup() {
 
 void loop() {
   capturarYGestionarDatos();
-  transmitirDatos();
-  // delay(10000);
+  gestionarTiempo(); // TODO: Agregar lo de almacenar en SD permanentemente
+  //generarAlertas();
+  // (WiFi.status() == WL_CONNECTED) ? transmitirDatos() : almacenarDatosLocalmente();
+  if(WiFi.status() == WL_CONNECTED){
+    transmitirDatos();
+  }
+  else{
+    //almacenarDatosLocalmente();
+  }
+  
+  
   entrarEnDeepSleep();
 }

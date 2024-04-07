@@ -14,7 +14,8 @@
 			"istream": "cpp",
 			"ostream": "cpp",
 			"*.tcc": "cpp",
-			"algorithm": "cpp"
+			"algorithm": "cpp",
+			"new": "cpp"
 		}
 	}
 }

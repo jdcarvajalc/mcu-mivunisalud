@@ -14,46 +14,51 @@
 #include <ESP32Time.h>
 // ****************************************************************************************
 /**
- * @brief Servidor NTP
- *
- * Dirección del servidor NTP para la sincronización de la hora.
+ * @brief Dirección del servidor NTP para la sincronización de la hora.
  */
 extern const char* ntpServer;
 // ****************************************************************************************
 /**
- * @brief Desplazamiento horario GMT
- *
- * Desplazamiento horario en segundos con respecto al horario GMT (Greenwich Mean Time).
+ * @brief Desplazamiento horario en segundos con respecto al horario GMT (Greenwich Mean Time).
  */
 extern const long gmtOffset_sec;
 // ****************************************************************************************
 /**
- * @brief Desplazamiento horario de verano
- *
- * Desplazamiento horario en segundos para tener en cuenta el horario de verano.
+ * @brief Desplazamiento horario en segundos para tener en cuenta el horario de verano.
  */
 extern const int daylightOffset_sec;
 // ****************************************************************************************
 /**
- * @brief RTC (Real-Time Clock)
- *
- * Instancia del objeto RTC (Real-Time Clock) utilizado para el manejo del tiempo.
+ * @brief Instancia del objeto RTC (Real-Time Clock) utilizado para el manejo del tiempo.
  */
 extern ESP32Time rtc;
 // ****************************************************************************************
 /**
- * @brief Actualiza el RTC (Real-Time Clock)
- *
- * Esta función actualiza el RTC (Real-Time Clock) utilizando la sincronización de hora
- * a través del servidor NTP y los desplazamientos horarios configurados.
+ * @brief Fecha de captura del dato de temperatura y humedad relativa
+ */
+extern String date;
+// ****************************************************************************************
+/**
+ * @brief Marca temporal de captura del dato de temperatura y humedad relativa
+ */
+extern String timestamp;
+// ****************************************************************************************
+/**
+ * @brief Esta función actualiza el RTC (Real-Time Clock) utilizando la sincronización 
+ * de hora a través del servidor NTP y los desplazamientos horarios configurados.
  */
 extern void actualizarRTC();
 // ****************************************************************************************
 /**
- * @brief Entra en el modo de suspensión (deep sleep)
- *
- * Esta función hace que el dispositivo entre en el modo de suspensión (deep sleep)
- * para reducir el consumo de energía.
+ * @brief Esta función obtiene la fecha y horas de la captura de los datos de temperatura y
+ * humedad relativa, a través del RTC
+ */
+extern void gestionarTiempo();
+// ****************************************************************************************
+/**
+ * @brief Esta función configura el modo de suspensión profunda en la ESP32 y 
+ * establece el tiempo de espera para despertar. En este caso, se establece un
+ * tiempo de espera de 10 minutos antes de que la ESP32 se despierte.
  */
 extern void entrarEnDeepSleep();
 // ****************************************************************************************

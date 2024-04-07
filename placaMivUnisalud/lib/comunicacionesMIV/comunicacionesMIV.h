@@ -55,9 +55,7 @@ extern void enviarMensaje(String mensaje);
 // ****************************************************************************************
 /**
 * @brief Esta función transmite
-* 
-* @return Bandera de confirmación de transmisión
 */
-extern boolean transmitirDatos();
+extern void transmitirDatos();
 // ****************************************************************************************
 #endif
