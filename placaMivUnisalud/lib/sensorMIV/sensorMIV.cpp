@@ -1,4 +1,5 @@
 // ****************************************************************************************
+// Archivo de declaración de variables, constantes y objetos
 #include "sensorMIV.h"
 // ****************************************************************************************
 /**
@@ -15,6 +16,12 @@ float promedioTemperatura = 0.0;
 * @brief Variable de promedio de humedad
 */
 float promedioHumedad = 0.0;
+// ****************************************************************************************
+extern void iniciarSensor(){
+  while (!sht31.begin(0x44)) {   
+    delay(1);
+  }
+}
 // ****************************************************************************************
 /**
 * @brief Lee la temperatura del sensor DHT y la devuelve como un valor de tipo float.

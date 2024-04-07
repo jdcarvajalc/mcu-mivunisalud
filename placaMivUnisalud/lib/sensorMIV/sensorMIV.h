@@ -30,6 +30,12 @@ extern float promedioTemperatura;
 extern float promedioHumedad;
 // ****************************************************************************************
 /**
+* @brief Esta función inicializa la comunicación de la MCU con el sensor a través de la
+* comunicación I2C, utilizando la dirección 0x44
+*/
+extern void iniciarSensor();
+// ****************************************************************************************
+/**
 * @brief Esta función lee la temperatura del sensor y la devuelve como un valor flotante.
 * @return El valor de temperatura leído.
 */

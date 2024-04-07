@@ -8,5 +8,13 @@
 			"path": "placaMivUnisalud"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"*.embeddedhtml": "html",
+			"istream": "cpp",
+			"ostream": "cpp",
+			"*.tcc": "cpp",
+			"algorithm": "cpp"
+		}
+	}
 }

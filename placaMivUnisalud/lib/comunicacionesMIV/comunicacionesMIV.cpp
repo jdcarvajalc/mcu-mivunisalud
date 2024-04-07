@@ -63,7 +63,8 @@ extern void enviarMensaje(String mensaje){
  * @brief Construye la URL de los datos
  *
  * Esta función construye la URL de los datos a enviar. Utiliza el objeto rtc para obtener
- * la fecha y hora actual y combina los valores de temperatura, humedad, fecha y hora en una cadena de consulta.
+ * la fecha y hora actual y combina los valores de temperatura, humedad, fecha y hora en 
+ * una cadena de consulta.
  *
  * @return La URL de los datos.
  */
@@ -94,12 +95,9 @@ extern boolean transmitirDatos(){
         int httpResponseCode = https.POST(data);
 
         if (httpResponseCode == 200) {
-            Serial.print("Todo correcto!");
             return true;
         }
         else {
-            Serial.print("Error code: ");
-            Serial.println(httpResponseCode);
             return false;
         }
         // Liberar recursos
@@ -107,7 +105,6 @@ extern boolean transmitirDatos(){
         
     }
     else {
-        Serial.println("WiFi Disconnected");
         return false;
     }
 }
