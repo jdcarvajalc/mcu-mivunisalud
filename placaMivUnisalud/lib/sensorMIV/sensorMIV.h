@@ -1,9 +1,7 @@
 // ****************************************************************************************
 /**
 * @file sensorMIV.h
-* @brief Biblioteca del sensor de temperatura y humedad usado en el proyecto.
-*
-* Esta biblioteca contiene las funciones y variables relacionadas con el sensor de
+* @brief Esta biblioteca contiene las funciones y variables relacionadas con el sensor de
 * temperatura y humedad, como la lectura de los valores del sensor, el cálculo del 
 * promedio y las variables globales para almacenar los valores promedio.
 */

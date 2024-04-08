@@ -6,6 +6,7 @@ const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = -5 * 3600;
 const int daylightOffset_sec = 0;
 // ****************************************************************************************
+String date, timestamp;
 ESP32Time rtc;
 // ****************************************************************************************
 void actualizarRTC() {
@@ -17,13 +18,21 @@ void actualizarRTC() {
 }
 // ****************************************************************************************
 void gestionarTiempo(){
-  date = rtc.getTime("%Y/%m/%d");
+  date = rtc.getTime("%Y-%m-%d");
   timestamp = rtc.getTime("%H:%M:%S");
-  // TODO: Agregar lo de almacenar en SD 
+  String datosAlmacenar = String(promedioTemperatura) 
+                          + "," 
+                          + String(promedioHumedad) 
+                          + "," 
+                          + date 
+                          + "," 
+                          + timestamp;
+  almacenarEnArchivoPermanente("/datos_permanentes.txt", datosAlmacenar);
+  validarReconexionWifi();
 }
 // ****************************************************************************************
-void entrarEnDeepSleep() {
-  esp_sleep_enable_timer_wakeup(2 * 60 * 1000000);
-  esp_deep_sleep_start();
+void esperarSiguienteCiclo() {
+  WiFi.disconnect();
+  delay(1.9*60000);//Tiempo de reposo restando el tiempo de comunicaciones
 }
 // ****************************************************************************************

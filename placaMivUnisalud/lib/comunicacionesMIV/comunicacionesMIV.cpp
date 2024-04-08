@@ -1,46 +1,35 @@
 // ****************************************************************************************
 #include "comunicacionesMIV.h"
 // ****************************************************************************************
-/**
-* @brief Constante de identificador de red 
-*/
+boolean banderaInicioPlaca;
 const char* SSID = "MarcElvia";
-// ****************************************************************************************
-/**
-* @brief Constante de contraseña de red 
-*/
 const char* PASSWORD = "R2S3T9S,";
-// ****************************************************************************************
-/**
-* @brief Constante de URL del servidor para registro de datos 
-*/
 const char* serverURL = "https://pruebasmiv.000webhostapp.com/api/almacenarDatosTemperaturaHumedad.php";
-/**
-* @brief Variable global que 
-*/
 String phoneNumber = "+573202897345";
-// ****************************************************************************************
-/**
-* @brief Variable global que 
-*/
 String apiKey = "5249216";
 // ****************************************************************************************
-/**
-* @brief Esta función conecta
-*/
-extern void conectarWifi(){
+void conectarWifi(){
     WiFi.begin(SSID, PASSWORD);
     while(WiFi.status() != WL_CONNECTED) {
         delay(1);
     }
 }
 // ****************************************************************************************
-/**
-* @brief Esta función envía
-* 
-* @param [in] mensaje: Mensaje a enviar
-*/
-extern void enviarMensaje(String mensaje){
+void validarReconexionWifi(){
+    int contador = 0;
+    if(banderaInicioPlaca){
+        banderaInicioPlaca = false;
+    }
+    else{
+        WiFi.begin(SSID, PASSWORD);
+        while(WiFi.status() != WL_CONNECTED && contador < 10000){
+            contador++;
+            delay(1); // Retardo entre cada intento de conexión
+        }
+    }
+}
+// ****************************************************************************************
+void enviarMensaje(String mensaje){
     // Data to send with HTTP POST
     String url = "https://api.callmebot.com/whatsapp.php?phone=" 
                 + phoneNumber 
@@ -59,21 +48,13 @@ extern void enviarMensaje(String mensaje){
     http.end();
 }
 // ****************************************************************************************
-/**
- * @brief Construye la URL de los datos
- *
- * Esta función construye la URL de los datos a enviar. Utiliza el objeto rtc para obtener
- * la fecha y hora actual y combina los valores de temperatura, humedad, fecha y hora en 
- * una cadena de consulta.
- *
- * @return La URL de los datos.
- */
 String construirURLDatos() {
   String urlDatos = "temp=" + String(promedioTemperatura) + "&hum=" + String(promedioHumedad) + "&date=" + date + "&timestamp=" + timestamp;
   return urlDatos;
 }
 // ****************************************************************************************
-extern void transmitirDatos(){
+void transmitirDatos(){
+    Serial.println("Mandando datos");
     String data = construirURLDatos();
 
     WiFiClientSecure *client = new WiFiClientSecure;

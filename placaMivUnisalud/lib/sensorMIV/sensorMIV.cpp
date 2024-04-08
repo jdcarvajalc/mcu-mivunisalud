@@ -2,62 +2,30 @@
 // Archivo de declaración de variables, constantes y objetos
 #include "sensorMIV.h"
 // ****************************************************************************************
-/**
-* @brief Instancia del objeto SHT31.
-*/
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
-// ****************************************************************************************
-/**
-* @brief Variable de promedio de temperatura
-*/
 float promedioTemperatura = 0.0;
-// ****************************************************************************************
-/**
-* @brief Variable de promedio de humedad
-*/
 float promedioHumedad = 0.0;
 // ****************************************************************************************
-extern void iniciarSensor(){
+void iniciarSensor(){
   while (!sht31.begin(0x44)) {   
     delay(1);
   }
 }
 // ****************************************************************************************
-/**
-* @brief Lee la temperatura del sensor DHT y la devuelve como un valor de tipo float.
-* @return El valor de la temperatura leído.
-*/
 float leerTemperatura() {
   float temperature;
   return temperature = sht31.readTemperature();
 }
 // ****************************************************************************************
-/**
-* @brief Lee la humedad del sensor DHT y la devuelve como un valor de tipo float.
-* @return El valor de la humedad leído.
-*/
 float leerHumedad() {
   float humidity;
   return humidity = sht31.readHumidity();
 }
 // ****************************************************************************************
-/**
-* @brief Calcula el promedio de temperatura y humedad a partir de múltiples lecturas
-* del sensor y actualiza las variables globales promedioTemperatura y promedioHumedad.
-* 
-* @param [in] suma: Suma del conjunto de números
-* @param [in] cantidadNumeros: Cantidad de números en el conjunto
-* 
-* @return El promedio del conjunto de números
-*/
 float calcularPromedio(float suma, float cantidadNumeros){
   return  suma/cantidadNumeros;
 }
 // ****************************************************************************************
-/**
-* @brief Integra las demás funciones para cumplir con los servicios del
-* sistema: captura y gestión de datos. 
-*/
 void capturarYGestionarDatos(){
   promedioTemperatura = 0.0;
   promedioHumedad = 0.0;

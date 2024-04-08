@@ -11,7 +11,16 @@
 #ifndef RELOJ_H
 #define RELOJ_H
 // ****************************************************************************************
+#include "comunicacionesMIV.h"
+#include "almacenamientoMIV.h"
+#include "WiFi.h"
+#include <HTTPClient.h>
+#include <WiFiClientSecure.h>
+#include <UrlEncode.h>
 #include <ESP32Time.h>
+#include <sys/time.h>
+#include <SD.h>
+#include "sensorMIV.h"
 // ****************************************************************************************
 /**
  * @brief Dirección del servidor NTP para la sincronización de la hora.
@@ -56,10 +65,9 @@ extern void actualizarRTC();
 extern void gestionarTiempo();
 // ****************************************************************************************
 /**
- * @brief Esta función configura el modo de suspensión profunda en la ESP32 y 
- * establece el tiempo de espera para despertar. En este caso, se establece un
- * tiempo de espera de 10 minutos antes de que la ESP32 se despierte.
+ * @brief Esta función configura el entorno de la MCU para esperar un tiempo determinado,
+ * hasta que sea necesario hacer la siguiente medición.
  */
-extern void entrarEnDeepSleep();
+extern void esperarSiguienteCiclo();
 // ****************************************************************************************
 #endif

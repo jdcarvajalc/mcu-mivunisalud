@@ -1,28 +1,27 @@
 #include <Arduino.h>
 #include <SPI.h>
-#include "sensorMIV.h"
+#include "almacenamientoMIV.h"
 #include "comunicacionesMIV.h"
 #include "relojMIV.h"
+#include "sensorMIV.h"
 
 void setup() {
+  banderaInicioPlaca = true;
   Serial.begin(115200);
   conectarWifi();
   iniciarSensor();
+  iniciarMicroSD();
   actualizarRTC();
+  Serial.println("1");
 }
 
 void loop() {
   capturarYGestionarDatos();
-  gestionarTiempo(); // TODO: Agregar lo de almacenar en SD permanentemente
+  Serial.println("2");
+  gestionarTiempo();
+  Serial.println("3");
   //generarAlertas();
-  // (WiFi.status() == WL_CONNECTED) ? transmitirDatos() : almacenarDatosLocalmente();
-  if(WiFi.status() == WL_CONNECTED){
-    transmitirDatos();
-  }
-  else{
-    //almacenarDatosLocalmente();
-  }
-  
-  
-  entrarEnDeepSleep();
+  (WiFi.status() == WL_CONNECTED) ? transmitirDatos() : almacenarDatosLocalmente();
+  Serial.println("4");
+  esperarSiguienteCiclo();
 }
