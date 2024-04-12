@@ -14,7 +14,8 @@
 // ****************************************************************************************
 #include "comunicacionesMIV.h"
 #include "sensorMIV.h"
-#include "WiFi.h"
+#include "almacenamientoMIV.h"
+#include <WiFi.h>
 #include <HTTPClient.h>
 #include <WiFiClientSecure.h>
 #include <UrlEncode.h>
