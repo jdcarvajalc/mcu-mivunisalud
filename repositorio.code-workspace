@@ -15,7 +15,8 @@
 			"ostream": "cpp",
 			"*.tcc": "cpp",
 			"algorithm": "cpp",
-			"new": "cpp"
+			"new": "cpp",
+			"utility": "cpp"
 		}
 	}
 }

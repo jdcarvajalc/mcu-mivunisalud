@@ -2,6 +2,7 @@
 #include <SPI.h>
 #include "almacenamientoMIV.h"
 #include "comunicacionesMIV.h"
+#include "alertasMIV.h"
 #include "relojMIV.h"
 #include "sensorMIV.h"
 
@@ -20,7 +21,7 @@ void loop() {
   Serial.println("2");
   gestionarTiempo();
   Serial.println("3");
-  //generarAlertas();
+  generarAlertas();
   (WiFi.status() == WL_CONNECTED) ? transmitirDatos() : almacenarDatosLocalmente();
   Serial.println("4");
   esperarSiguienteCiclo();
