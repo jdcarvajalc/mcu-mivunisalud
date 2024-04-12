@@ -13,16 +13,12 @@ void setup() {
   iniciarSensor();
   iniciarMicroSD();
   actualizarRTC();
-  Serial.println("1");
 }
 
 void loop() {
   capturarYGestionarDatos();
-  Serial.println("2");
   gestionarTiempo();
-  Serial.println("3");
   generarAlertas();
   (WiFi.status() == WL_CONNECTED) ? transmitirDatos() : almacenarDatosLocalmente();
-  Serial.println("4");
   esperarSiguienteCiclo();
 }
