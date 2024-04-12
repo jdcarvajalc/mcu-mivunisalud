@@ -20,5 +20,4 @@ void loop() {
   gestionarTiempo();
   generarAlertas();
   (WiFi.status() == WL_CONNECTED) ? transmitirDatos() : almacenarDatosLocalmente();
-  esperarSiguienteCiclo();
 }

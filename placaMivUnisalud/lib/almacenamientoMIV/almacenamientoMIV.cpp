@@ -26,5 +26,5 @@ void almacenarDatosLocalmente(){
     archivoDatosTemporales.println(guardarURL);
     archivoDatosTemporales.close();
     Serial.println("Almacene temporalmente");
-
+    esperarSiguienteCiclo();
 }

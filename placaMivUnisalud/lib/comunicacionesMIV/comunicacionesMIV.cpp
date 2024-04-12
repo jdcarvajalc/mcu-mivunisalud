@@ -73,5 +73,6 @@ void transmitirDatos(){
     }
     // Liberar recursos
     https.end();
+    esperarSiguienteCiclo();
 }
 // ****************************************************************************************
