@@ -33,7 +33,7 @@ void validarReconexionWifi(){
 // ****************************************************************************************
 void enviarMensaje(String mensaje){
     if(WiFi.status() == WL_CONNECTED){
-        // Data to send with HTTP POST
+        // Datos a enviar
         String url = "https://api.callmebot.com/whatsapp.php?phone=" 
                     + phoneNumber 
                     + "&apikey=" 
@@ -41,16 +41,16 @@ void enviarMensaje(String mensaje){
                     + "&text=" 
                     + urlEncode(mensaje);    
         HTTPClient http;
-        http.begin(url);
+        http.begin(url); // Establecer comunicación con API
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
         // Enviar petición HTTP de tipo POST 
         int httpResponseCode = http.POST(url);
         Serial.println(httpResponseCode);
         if(httpResponseCode != 200){
-            
             //almacenarAlertaFallida();
         }
+        
         // Liberar recursos
         http.end();
     }
@@ -74,6 +74,9 @@ void transmitirDatos(){
 
         // Enviar petición HTTPS de tipo POST
         int httpResponseCode = https.POST(data);
+        if(httpResponseCode != 200){
+            //almacenarTransmisionFallida();
+        }
 
         // Liberar recursos
         https.end();
