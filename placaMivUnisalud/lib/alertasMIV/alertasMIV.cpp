@@ -1,8 +1,8 @@
 // ****************************************************************************************
 #include "alertasMIV.h"
 // ****************************************************************************************
-const float limiteInferiorUmbralTemp = 28.0;
-const float limiteInferiorUmbralHum = 65.0;
+const float limiteInferiorUmbralTemp = 29.7;
+const float limiteInferiorUmbralHum = 68.0;
 // ****************************************************************************************
 boolean validarUmbralTemperatura(){
     boolean entraEnRangoUmbralTemp;
