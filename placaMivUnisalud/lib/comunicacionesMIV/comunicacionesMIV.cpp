@@ -64,11 +64,6 @@ void transmitirDatos(){
         Serial.println("Mandando datos");
         String data = construirURLDatos();
 
-        // WiFiClientSecure *client = new WiFiClientSecure;
-        // client -> setInsecure();
-        // HTTPClient https;
-
-        // https.begin(*client, serverURL);
         HTTPClient https;
 
         https.begin(serverURL);
