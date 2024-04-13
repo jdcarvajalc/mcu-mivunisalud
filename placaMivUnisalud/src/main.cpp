@@ -24,5 +24,4 @@ void loop() {
   almacenarDatosLocalmente();
   generarAlertas(); //TODO: almacenar la alerta en microSD para enviarla si no fue enviada con callmebot
   transmitirDatos();
-  Serial.println("esperaré siguiente ciclo");
 }

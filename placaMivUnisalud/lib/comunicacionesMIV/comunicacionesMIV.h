@@ -25,12 +25,12 @@ extern boolean banderaInicioPlaca;
 /**
 * @brief Constante global que 
 */
-extern const char* SSID;
+extern const char* ssid;
 // ****************************************************************************************
 /**
 * @brief Constante global que 
 */
-extern const char* PASSWORD;
+extern const char* password;
 // ****************************************************************************************
 /**
 * @brief Constante global que contiene la URL del servidor para registrar datos

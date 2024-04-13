@@ -1,6 +1,8 @@
 // ****************************************************************************************
+// Archivo de declaración de variables, constantes y objetos
 #include "alertasMIV.h"
 // ****************************************************************************************
+// Definición y/o invocación de variables, constantes y objetos
 const float limiteUmbralTemp = 9.7;
 const float limiteUmbralHum = 68.0;
 int tipoAlerta;

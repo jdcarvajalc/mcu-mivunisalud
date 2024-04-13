@@ -33,6 +33,11 @@ extern const float limiteUmbralTemp;
 extern const float limiteUmbralHum;
 // ****************************************************************************************
 /**
+* @brief Variable que permite establecer el tipo de alerta que debe generarse
+*/
+extern int tipoAlerta;
+// ****************************************************************************************
+/**
 * @brief Esta función valida si el promedio de la temperatura supera el límite 
 * inferior del umbral de temperatura estipulado por la normatividad vigente
 * 

@@ -1,6 +1,8 @@
 // ****************************************************************************************
+// Archivo de declaración de variables, constantes y objetos
 #include "almacenamientoMIV.h"
 // ****************************************************************************************
+// Definición y/o invocación de variables, constantes y objetos
 const int chipSelect = 5;
 File archivoDatosPermanentes;
 // ****************************************************************************************

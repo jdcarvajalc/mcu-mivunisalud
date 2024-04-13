@@ -1,15 +1,17 @@
 // ****************************************************************************************
+// Archivo de declaración de variables, constantes y objetos
 #include "comunicacionesMIV.h"
 // ****************************************************************************************
+// Definición y/o invocación de variables, constantes y objetos
 boolean banderaInicioPlaca;
-const char* SSID = "MarcElvia";
-const char* PASSWORD = "R2S3T9S,";
+const char* ssid = "MarcElvia";
+const char* password = "R2S3T9S,";
 const char* serverURL = "https://pruebasmiv.000webhostapp.com/api/almacenarDatosTemperaturaHumedad.php";
 String phoneNumber = "+573202897345";
 String apiKey = "5249216";
 // ****************************************************************************************
 void conectarWifi(){
-    WiFi.begin(SSID, PASSWORD);
+    WiFi.begin(ssid, password);
     while(WiFi.status() != WL_CONNECTED) {
         delay(1);
     }
@@ -21,7 +23,7 @@ void validarReconexionWifi(){
         banderaInicioPlaca = false;
     }
     else{
-        WiFi.begin(SSID, PASSWORD);
+        WiFi.begin(ssid, password);
         while(WiFi.status() != WL_CONNECTED && contador < 10000){
             contador++;
             delay(1); // Retardo entre cada intento de conexión

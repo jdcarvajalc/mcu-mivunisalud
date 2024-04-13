@@ -2,6 +2,7 @@
 // Archivo de declaración de variables, constantes y objetos
 #include "sensorMIV.h"
 // ****************************************************************************************
+// Definición y/o invocación de variables, constantes y objetos
 Adafruit_SHT31 sht31 = Adafruit_SHT31();
 float promedioTemperatura = 0.0;
 float promedioHumedad = 0.0;

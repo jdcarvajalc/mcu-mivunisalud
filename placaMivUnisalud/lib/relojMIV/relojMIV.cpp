@@ -1,11 +1,11 @@
 // ****************************************************************************************
+// Archivo de declaración de variables, constantes y objetos
 #include "relojMIV.h"
 // ****************************************************************************************
-// Datos conexión servidor NTP -> Colombia
+// Definición y/o invocación de variables, constantes y objetos
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffset_sec = -5 * 3600;
 const int daylightOffset_sec = 0;
-// ****************************************************************************************
 String date, timestamp;
 ESP32Time rtc;
 // ****************************************************************************************
