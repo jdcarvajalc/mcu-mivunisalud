@@ -35,17 +35,7 @@ extern File archivoDatosTemporales;
 extern void iniciarMicroSD();
 // ****************************************************************************************
 /**
-* @brief Esta función escribe en un archivo de la tarjeta microSD los datos de forma
-*  permanente.
-* 
-* @param [in] ruta: Ruta del archivo donde va a escribirse
-* @param [in] datos: Datos que se desean escribir en el archivo
-*/
-extern void almacenarEnArchivoPermanente(String ruta, String datos);
-// ****************************************************************************************
-/**
-* @brief Esta función escribe en un archivo de la tarjeta microSD los datos de forma
-*  temporal, hasta que sea posible enviarlos por la red.
+* @brief Este servicio ...
 */
 extern void almacenarDatosLocalmente();
 // ****************************************************************************************

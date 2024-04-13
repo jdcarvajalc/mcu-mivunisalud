@@ -13,18 +13,16 @@ void iniciarMicroSD(){
     archivoDatosPermanentes.close();
 }
 // ****************************************************************************************
-void almacenarEnArchivoPermanente(String ruta, String datos){
-    archivoDatosPermanentes = SD.open(ruta, FILE_APPEND);
-    archivoDatosPermanentes.println(datos);
+void almacenarDatosLocalmente(){
+    String datosAlmacenar = String(promedioTemperatura) 
+                            + "," 
+                            + String(promedioHumedad) 
+                            + "," 
+                            + date 
+                            + "," 
+                            + timestamp;
+    archivoDatosPermanentes = SD.open("/datos_permanentes.txt", FILE_APPEND);
+    archivoDatosPermanentes.println(datosAlmacenar);
     archivoDatosPermanentes.close();
     Serial.println("Almacene permanente");
-}
-// ****************************************************************************************
-void almacenarDatosLocalmente(){
-    String guardarURL = construirURLDatos();
-    archivoDatosTemporales = SD.open("/temporales.txt", FILE_APPEND);
-    archivoDatosTemporales.println(guardarURL);
-    archivoDatosTemporales.close();
-    Serial.println("Almacene temporalmente");
-    esperarSiguienteCiclo();
 }

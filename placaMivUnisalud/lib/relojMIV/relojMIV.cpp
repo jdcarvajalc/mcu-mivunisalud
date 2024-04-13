@@ -20,13 +20,6 @@ void actualizarRTC() {
 void gestionarTiempo(){
   date = rtc.getTime("%Y-%m-%d");
   timestamp = rtc.getTime("%H:%M:%S");
-  String datosAlmacenar = String(promedioTemperatura) 
-                          + "," 
-                          + String(promedioHumedad) 
-                          + "," 
-                          + date 
-                          + "," 
-                          + timestamp;
   validarReconexionWifi();
 }
 // ****************************************************************************************
