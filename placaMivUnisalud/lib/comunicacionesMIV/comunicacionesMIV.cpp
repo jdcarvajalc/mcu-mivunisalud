@@ -54,25 +54,27 @@ String construirURLDatos() {
 }
 // ****************************************************************************************
 void transmitirDatos(){
-    Serial.println("Mandando datos");
-    String data = construirURLDatos();
+    if(WiFi.status() == WL_CONNECTED){
+        Serial.println("Mandando datos");
+        String data = construirURLDatos();
 
-    WiFiClientSecure *client = new WiFiClientSecure;
-    client -> setInsecure();
-    HTTPClient https;
+        WiFiClientSecure *client = new WiFiClientSecure;
+        client -> setInsecure();
+        HTTPClient https;
 
-    https.begin(*client, serverURL);
+        https.begin(*client, serverURL);
 
-    https.addHeader("Content-Type", "application/x-www-form-urlencoded");
+        https.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    // Enviar petición HTTPS de tipo POST
-    int httpResponseCode = https.POST(data);
+        // Enviar petición HTTPS de tipo POST
+        int httpResponseCode = https.POST(data);
 
-    if (httpResponseCode != 200) {
-        //TODO: función en sd que almacene las veces que no ha sido exitoso el envío
+        // Liberar recursos
+        https.end();
+        esperarSiguienteCiclo();
     }
-    // Liberar recursos
-    https.end();
-    esperarSiguienteCiclo();
+    else{
+        esperarSiguienteCiclo();
+    }
 }
 // ****************************************************************************************

@@ -27,7 +27,6 @@ void gestionarTiempo(){
                           + date 
                           + "," 
                           + timestamp;
-  almacenarEnArchivoPermanente("/datos_permanentes.txt", datosAlmacenar);
   validarReconexionWifi();
 }
 // ****************************************************************************************

@@ -18,6 +18,7 @@ void setup() {
 void loop() {
   capturarYGestionarDatos();
   gestionarTiempo();
-  generarAlertas();
-  (WiFi.status() == WL_CONNECTED) ? transmitirDatos() : almacenarDatosLocalmente();
+  almacenarDatosLocalmente();
+  generarAlertas(); //TODO: almacenar la alerta en microSD para enviarla si no fue enviada con callmebot
+  transmitirDatos();
 }
