@@ -23,12 +23,6 @@ extern const int chipSelect;
 extern File archivoDatosPermanentes;
 // ****************************************************************************************
 /**
-* @brief Objeto de tipo archivo para el fichero en el que se guardarán los datos 
-* temporalmente.
-*/
-extern File archivoDatosTemporales;
-// ****************************************************************************************
-/**
 * @brief Esta función inicializa la comunicación de la MCU con el módulo micro SD
 * a través de la comunicación SPI
 */

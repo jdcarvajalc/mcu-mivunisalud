@@ -20,7 +20,6 @@ void actualizarRTC() {
 void gestionarTiempo(){
   date = rtc.getTime("%Y-%m-%d");
   timestamp = rtc.getTime("%H:%M:%S");
-  validarReconexionWifi();
 }
 // ****************************************************************************************
 void esperarSiguienteCiclo() {

@@ -2,7 +2,7 @@
 #include "almacenamientoMIV.h"
 // ****************************************************************************************
 const int chipSelect = 5;
-File archivoDatosPermanentes, archivoDatosTemporales;
+File archivoDatosPermanentes;
 // ****************************************************************************************
 void iniciarMicroSD(){
     if (!SD.begin(chipSelect)) {
@@ -25,4 +25,5 @@ void almacenarDatosLocalmente(){
     archivoDatosPermanentes.println(datosAlmacenar);
     archivoDatosPermanentes.close();
     Serial.println("Almacene permanente");
+    validarReconexionWifi();
 }
