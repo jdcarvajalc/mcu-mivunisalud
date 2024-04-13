@@ -21,16 +21,16 @@
 #include <UrlEncode.h>
 // ****************************************************************************************
 /**
-* @brief Constante con el límite inferior del umbral de temperatura establecido por la 
-* normatividad vigente.
+* @brief Constante con el límite del umbral de temperatura establecido por 
+* la normatividad vigente. Además, considerando la precisión típica del sensor
 */
-extern const float limiteInferiorUmbralTemp;
+extern const float limiteUmbralTemp;
 // ****************************************************************************************
 /**
-* @brief Constante con el límite inferior del umbral de humedad relativa
-* establecido por la normatividad vigente.
+* @brief Constante con el límite del umbral de humedad relativa establecido por 
+* la normatividad vigente. Además, considerando la precisión típica del sensor
 */
-extern const float limiteInferiorUmbralHum;
+extern const float limiteUmbralHum;
 // ****************************************************************************************
 /**
 * @brief Esta función valida si el promedio de la temperatura supera el límite 

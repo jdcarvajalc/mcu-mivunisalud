@@ -1,18 +1,18 @@
 // ****************************************************************************************
 #include "alertasMIV.h"
 // ****************************************************************************************
-const float limiteInferiorUmbralTemp = 29.7;
-const float limiteInferiorUmbralHum = 68.0;
+const float limiteUmbralTemp = 29.7;
+const float limiteUmbralHum = 68.0;
 // ****************************************************************************************
 boolean validarUmbralTemperatura(){
     boolean entraEnRangoUmbralTemp;
-    (promedioTemperatura > limiteInferiorUmbralTemp) ? entraEnRangoUmbralTemp = true : entraEnRangoUmbralTemp = false;
+    (promedioTemperatura > limiteUmbralTemp) ? entraEnRangoUmbralTemp = true : entraEnRangoUmbralTemp = false;
     return entraEnRangoUmbralTemp;
 }
 // ****************************************************************************************
 boolean validarUmbralHumedad(){
     boolean entraEnRangoUmbralHum;
-    (promedioTemperatura > limiteInferiorUmbralHum) ? entraEnRangoUmbralHum = true : entraEnRangoUmbralHum = false;
+    (promedioTemperatura > limiteUmbralHum) ? entraEnRangoUmbralHum = true : entraEnRangoUmbralHum = false;
     return entraEnRangoUmbralHum;
 }
 // ****************************************************************************************
