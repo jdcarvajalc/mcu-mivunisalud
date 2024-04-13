@@ -30,22 +30,28 @@ void validarReconexionWifi(){
 }
 // ****************************************************************************************
 void enviarMensaje(String mensaje){
-    // Data to send with HTTP POST
-    String url = "https://api.callmebot.com/whatsapp.php?phone=" 
-                + phoneNumber 
-                + "&apikey=" 
-                + apiKey 
-                + "&text=" 
-                + urlEncode(mensaje);    
-    HTTPClient http;
-    http.begin(url);
-    http.addHeader("Content-Type", "application/x-www-form-urlencoded");
+    if(WiFi.status() == WL_CONNECTED){
+        // Data to send with HTTP POST
+        String url = "https://api.callmebot.com/whatsapp.php?phone=" 
+                    + phoneNumber 
+                    + "&apikey=" 
+                    + apiKey 
+                    + "&text=" 
+                    + urlEncode(mensaje);    
+        HTTPClient http;
+        http.begin(url);
+        http.addHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    // Enviar petición HTTP de tipo POST 
-    int httpResponseCode = http.POST(url);
-
-    // Liberar recursos
-    http.end();
+        // Enviar petición HTTP de tipo POST 
+        int httpResponseCode = http.POST(url);
+        Serial.println(httpResponseCode);
+        if(httpResponseCode != 200){
+            
+            //almacenarAlertaFallida();
+        }
+        // Liberar recursos
+        http.end();
+    }
 }
 // ****************************************************************************************
 String construirURLDatos() {
@@ -58,11 +64,14 @@ void transmitirDatos(){
         Serial.println("Mandando datos");
         String data = construirURLDatos();
 
-        WiFiClientSecure *client = new WiFiClientSecure;
-        client -> setInsecure();
+        // WiFiClientSecure *client = new WiFiClientSecure;
+        // client -> setInsecure();
+        // HTTPClient https;
+
+        // https.begin(*client, serverURL);
         HTTPClient https;
 
-        https.begin(*client, serverURL);
+        https.begin(serverURL);
 
         https.addHeader("Content-Type", "application/x-www-form-urlencoded");
 

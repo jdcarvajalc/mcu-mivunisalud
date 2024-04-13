@@ -51,26 +51,16 @@ extern boolean validarUmbralTemperatura();
 extern boolean validarUmbralHumedad();
 // ****************************************************************************************
 /**
-* @brief Esta función construye el mensaje de alerta de temperatura
-* para enviarlo al responsable
+* @brief Esta función decide que tipo de alerta es la que se debe generar.
 * 
-* @param [in] estaEnRango: Bandera que indica si se encuentra en el rango del
-* umbral de temperatura
+* @param [in] validacionTemp: Bandera de validación de la temperatura
+* @param [in] validacionHum: Bandera de validación de la humedad relativa
 */
-extern void alertaTemperatura(boolean estaEnRango);
-// ****************************************************************************************
-/**
-* @brief Esta función construye el mensaje de alerta de humedad relativa
-* para enviarlo al responsable
-* 
-* @param [in] estaEnRango: Bandera que indica si se encuentra en el rango del
-* umbral de humedad relativa
-*/
-extern void alertaHumedad(boolean estaEnRango);
+extern void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum);
 // ****************************************************************************************
 /**
 * @brief Este servicio se encarga de validar que la temperatura y humedad relativa,
-* no superen el valor de límite inferior de los umbrales establecidos por la normatividad
+* no superen el valor de los umbrales establecidos por la normatividad
 * vigente. Después de realizar la validación, si es el caso, envía los mensajes de alerta
 * respectivos al celular del responsable, de forma que pueda actuar de preventivamente.
 */

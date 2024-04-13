@@ -1,8 +1,9 @@
 // ****************************************************************************************
 #include "alertasMIV.h"
 // ****************************************************************************************
-const float limiteUmbralTemp = 29.7;
+const float limiteUmbralTemp = 9.7;
 const float limiteUmbralHum = 68.0;
+int tipoAlerta;
 // ****************************************************************************************
 boolean validarUmbralTemperatura(){
     boolean entraEnRangoUmbralTemp;
@@ -16,20 +17,35 @@ boolean validarUmbralHumedad(){
     return entraEnRangoUmbralHum;
 }
 // ****************************************************************************************
-void alertaTemperatura(boolean estaEnRango){
-    if(estaEnRango){
-        enviarMensaje("⚠ Entrando a rango del umbral de temperatura ⚠ Temperatura [°C] = " + String(promedioTemperatura));
+void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum){
+    if(validacionTemp && validacionHum){
+        tipoAlerta = 3;
     }
-}
-// ****************************************************************************************
-void alertaHumedad(boolean estaEnRango){
-    if(estaEnRango){
-        enviarMensaje("⚠ Entrando a rango del umbral de humedad ⚠ Humedad [%] = " + String(promedioHumedad));
+    else if (validacionTemp){
+        tipoAlerta = 1;
+    }
+    else if (validacionHum){
+        tipoAlerta = 2;
+    }
+    else{
+        tipoAlerta = 0;
     }
 }
 // ****************************************************************************************
 void generarAlertas(){
-    alertaTemperatura(validarUmbralTemperatura());
-    alertaHumedad(validarUmbralHumedad());
+    manejadorTipoAlerta(validarUmbralTemperatura(), validarUmbralHumedad());
+    switch(tipoAlerta){
+        case 0:
+            break;
+        case 1:
+            enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura));
+            break;
+        case 2:
+            enviarMensaje("⚠ ALERTA ⚠\nHumedad [%] = " + String(promedioHumedad));
+            break;
+        case 3:
+            enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura)+"\nHumedad [%] = "+ String(promedioHumedad));
+            break;
+    }
 }
 // ****************************************************************************************
