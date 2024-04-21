@@ -23,5 +23,5 @@ void loop() {
   Serial.println("pasé gestión tiempo");
   almacenarDatosLocalmente(); //TODO: Agregar dato de área de monitoreo
   generarAlertas(); //TODO: almacenar la alerta en microSD para enviarla si no fue enviada con callmebot
-  transmitirDatos();
+  transmitirDatos(); //TODO: almacenar URL transmisión fallida
 }

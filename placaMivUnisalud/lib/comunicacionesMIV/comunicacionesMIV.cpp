@@ -57,32 +57,36 @@ void enviarMensaje(String mensaje){
 }
 // ****************************************************************************************
 String construirURLDatos() {
-  String urlDatos = "temp=" + String(promedioTemperatura) + "&hum=" + String(promedioHumedad) + "&date=" + date + "&timestamp=" + timestamp;
+  String urlDatos = "temp=" 
+                    + String(promedioTemperatura) 
+                    + "&hum=" 
+                    + String(promedioHumedad) 
+                    + "&date=" 
+                    + date 
+                    + "&timestamp=" 
+                    + timestamp;
   return urlDatos;
 }
 // ****************************************************************************************
 void transmitirDatos(){
+    String data = construirURLDatos(); // URL para enviar los datos al servidor
+
     if(WiFi.status() == WL_CONNECTED){
         Serial.println("Mandando datos");
-        String data = construirURLDatos();
+        HTTPClient https; // Instancia de cliente HTTPS
+        https.begin(serverURL); // Establecer comunicación con servidor
+        https.addHeader("Content-Type", "application/x-www-form-urlencoded"); // Cabecera de la petición
 
-        HTTPClient https;
-
-        https.begin(serverURL);
-
-        https.addHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        // Enviar petición HTTPS de tipo POST
-        int httpResponseCode = https.POST(data);
+        int httpResponseCode = https.POST(data); // Enviar petición HTTPS de tipo POST
         if(httpResponseCode != 200){
-            //almacenarTransmisionFallida();
+            //almacenarTransmisionFallida(data);
         }
-
-        // Liberar recursos
-        https.end();
+        https.end(); // Liberar recursos
+        
         esperarSiguienteCiclo();
     }
     else{
+        //almacenarTransmisionFallida(data);
         esperarSiguienteCiclo();
     }
 }
