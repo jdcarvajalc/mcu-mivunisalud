@@ -11,7 +11,7 @@
         "<script>
             confirm('Datos incorrectos')
             open('../../index.php ')
-            close('loguear.php')
+            close('/app/controllers/controladorInicioSesion.php')
         </script>";
     }
 
