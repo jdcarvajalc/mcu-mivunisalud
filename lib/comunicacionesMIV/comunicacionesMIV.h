@@ -1,10 +1,10 @@
 // ****************************************************************************************
 /**
-* @file comunicacionesMIV.h
-* @brief Biblioteca de comunicaciones usadas en el proyecto.
-*
-* Esta biblioteca contiene las funciones y variables relacionadas con las comunicaciones.
-*/
+ * @file comunicacionesMIV.h
+ * @brief Biblioteca de comunicaciones usadas en el proyecto.
+ *
+ * Esta biblioteca contiene las funciones y variables relacionadas con las comunicaciones.
+ */
 // ****************************************************************************************
 #ifndef COMUNICACIONES_H
 #define COMUNICACIONES_H
@@ -18,62 +18,37 @@
 #include "relojMIV.h"
 // ****************************************************************************************
 /**
-* @brief Bandera para saber si es necesario conectarse nuevamente a la red o no.
-*/
+ * @brief Bandera para saber si es necesario conectarse nuevamente a la red o no.
+ */
 extern boolean banderaInicioPlaca;
 // ****************************************************************************************
 /**
-* @brief Constante global que 
-*/
-extern const char* ssid;
-// ****************************************************************************************
-/**
-* @brief Constante global que 
-*/
-extern const char* password;
-// ****************************************************************************************
-/**
-* @brief Constante global que contiene la URL del servidor para registrar datos
-*/
-extern const char* serverURL;
-// ****************************************************************************************
-/**
-* @brief Variable global que 
-*/
-extern String phoneNumber;
-// ****************************************************************************************
-/**
-* @brief Variable global que 
-*/
-extern String apiKey;
-// ****************************************************************************************
-/**
-* @brief Esta función conecta
-*/
+ * @brief Esta función conecta
+ */
 extern void conectarWifi();
 // ****************************************************************************************
 /**
-* @brief Esta función valida si es necesario reconectar el Wifi
-*/
+ * @brief Esta función valida si es necesario reconectar el Wifi
+ */
 extern void validarReconexionWifi();
 // ****************************************************************************************
 /**
-* @brief Esta función envía
-* 
-* @param [in] mensaje: Mensaje a enviar
-*/
+ * @brief Esta función envía
+ *
+ * @param [in] mensaje: Mensaje a enviar
+ */
 extern void enviarMensaje(String mensaje);
 // ****************************************************************************************
 /**
-* @brief Esta función construye
-* 
-* @return La url completa para la petición
-*/
+ * @brief Esta función construye
+ *
+ * @return La url completa para la petición
+ */
 extern String construirURLDatos();
 // ****************************************************************************************
 /**
-* @brief Esta función transmite
-*/
+ * @brief Esta función transmite
+ */
 extern void transmitirDatos();
 // ****************************************************************************************
 #endif
