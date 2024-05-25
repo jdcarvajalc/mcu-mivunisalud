@@ -39,7 +39,11 @@ void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum)
 // ****************************************************************************************
 void generarAlertas()
 {
-    manejadorTipoAlerta(validarUmbralTemperatura(), validarUmbralHumedad());
+    boolean validacionTemp = validarUmbralTemperatura();
+    boolean validacionHum = validarUmbralHumedad();
+
+    manejadorTipoAlerta(validacionTemp, validacionHum);
+
     switch (tipoAlerta)
     {
     case 0:
