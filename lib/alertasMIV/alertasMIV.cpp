@@ -7,47 +7,56 @@ const float limiteUmbralTemp = 29.7;
 const float limiteUmbralHum = 68.0;
 int tipoAlerta;
 // ****************************************************************************************
-boolean validarUmbralTemperatura(){
-    boolean entraEnRangoUmbralTemp;
-    (promedioTemperatura > limiteUmbralTemp) ? entraEnRangoUmbralTemp = true : entraEnRangoUmbralTemp = false;
-    return entraEnRangoUmbralTemp;
+boolean validarUmbralTemperatura()
+{
+    return promedioTemperatura > limiteUmbralTemp;
 }
 // ****************************************************************************************
-boolean validarUmbralHumedad(){
-    boolean entraEnRangoUmbralHum;
-    (promedioTemperatura > limiteUmbralHum) ? entraEnRangoUmbralHum = true : entraEnRangoUmbralHum = false;
-    return entraEnRangoUmbralHum;
+boolean validarUmbralHumedad()
+{
+    return promedioHumedad > limiteUmbralHum;
 }
 // ****************************************************************************************
-void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum){
-    if(validacionTemp && validacionHum){
+void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum)
+{
+    if (validacionTemp && validacionHum)
+    {
         tipoAlerta = 3;
     }
-    else if (validacionTemp){
+    else if (validacionTemp)
+    {
         tipoAlerta = 1;
     }
-    else if (validacionHum){
+    else if (validacionHum)
+    {
         tipoAlerta = 2;
     }
-    else{
+    else
+    {
         tipoAlerta = 0;
     }
 }
 // ****************************************************************************************
-void generarAlertas(){
+void generarAlertas()
+{
     manejadorTipoAlerta(validarUmbralTemperatura(), validarUmbralHumedad());
-    switch(tipoAlerta){
-        case 0:
-            break;
-        case 1:
-            enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura));
-            break;
-        case 2:
-            enviarMensaje("⚠ ALERTA ⚠\nHumedad [%] = " + String(promedioHumedad));
-            break;
-        case 3:
-            enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura)+"\nHumedad [%] = "+ String(promedioHumedad));
-            break;
+    switch (tipoAlerta)
+    {
+    case 0:
+        Serial.println("No se generó ninguna alerta");
+        break;
+    case 1:
+        Serial.println("Superó temp");
+        enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura));
+        break;
+    case 2:
+        Serial.println("Superó hum");
+        enviarMensaje("⚠ ALERTA ⚠\nHumedad [%] = " + String(promedioHumedad));
+        break;
+    case 3:
+        Serial.println("Superó ambos");
+        enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura) + "\nHumedad [%] = " + String(promedioHumedad));
+        break;
     }
 }
 // ****************************************************************************************
