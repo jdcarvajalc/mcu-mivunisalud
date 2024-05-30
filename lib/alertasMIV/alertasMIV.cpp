@@ -3,8 +3,8 @@
 #include "alertasMIV.h"
 // ****************************************************************************************
 // Definición y/o invocación de variables, constantes y objetos
-const float limiteUmbralTemp = 29.7;
-const float limiteUmbralHum = 68.0;
+const float limiteUmbralTemp = 27.7;
+const float limiteUmbralHum = 68.0; // 63.0
 int tipoAlerta;
 // ****************************************************************************************
 boolean validarUmbralTemperatura(){
