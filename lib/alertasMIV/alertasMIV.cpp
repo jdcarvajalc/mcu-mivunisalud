@@ -4,7 +4,7 @@
 // ****************************************************************************************
 // Definición y/o invocación de variables, constantes y objetos
 const float limiteUmbralTemp = 27.7;
-const float limiteUmbralHum = 68.0; // 63.0
+const float limiteUmbralHum = 63.0; // 63.0
 int tipoAlerta;
 // ****************************************************************************************
 boolean validarUmbralTemperatura(){
