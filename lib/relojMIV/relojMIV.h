@@ -12,6 +12,7 @@
 #define RELOJ_H
 // ****************************************************************************************
 #include "comunicacionesMIV.h"
+#include "configMIV.h"
 #include "almacenamientoMIV.h"
 #include "WiFi.h"
 #include <HTTPClient.h>
@@ -25,7 +26,7 @@
 /**
  * @brief Dirección del servidor NTP para la sincronización de la hora.
  */
-extern const char* ntpServer;
+extern const char *ntpServer;
 // ****************************************************************************************
 /**
  * @brief Desplazamiento horario en segundos con respecto al horario GMT (Greenwich Mean Time).
@@ -53,7 +54,7 @@ extern String date;
 extern String timestamp;
 // ****************************************************************************************
 /**
- * @brief Esta función actualiza el RTC (Real-Time Clock) utilizando la sincronización 
+ * @brief Esta función actualiza el RTC (Real-Time Clock) utilizando la sincronización
  * de hora a través del servidor NTP y los desplazamientos horarios configurados.
  */
 extern void actualizarRTC();

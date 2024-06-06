@@ -58,7 +58,7 @@ void enviarMensaje(String mensaje)
 // ****************************************************************************************
 String construirURLDatos()
 {
-    String urlDatos = "temp=" + String(promedioTemperatura) + "&hum=" + String(promedioHumedad) + "&date=" + date + "&timestamp=" + timestamp;
+    String urlDatos = "area=" + String(identificadorArea) + "&temp=" + String(promedioTemperatura) + "&hum=" + String(promedioHumedad) + "&date=" + date + "&timestamp=" + timestamp;
     return urlDatos;
 }
 // ****************************************************************************************

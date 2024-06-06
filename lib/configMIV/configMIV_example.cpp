@@ -10,3 +10,4 @@
 // const char *serverURL = "";
 // String phoneNumber = "";
 // String apiKey = "";
+// int identificadorArea = 1;

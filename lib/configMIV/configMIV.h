@@ -16,5 +16,6 @@ extern const char *password;
 extern const char *serverURL;
 extern String phoneNumber;
 extern String apiKey;
+extern int identificadorArea;
 
 #endif
