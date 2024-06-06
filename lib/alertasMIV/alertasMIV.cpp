@@ -9,12 +9,16 @@ int tipoAlerta;
 // ****************************************************************************************
 boolean validarUmbralTemperatura()
 {
-    return promedioTemperatura > limiteUmbralTemp;
+    boolean entraEnRangoUmbralTemp;
+    (promedioTemperatura > limiteUmbralTemp) ? entraEnRangoUmbralTemp = true : entraEnRangoUmbralTemp = false;
+    return entraEnRangoUmbralTemp;
 }
 // ****************************************************************************************
 boolean validarUmbralHumedad()
 {
-    return promedioHumedad > limiteUmbralHum;
+    boolean entraEnRangoUmbralHum;
+    (promedioTemperatura > limiteUmbralHum) ? entraEnRangoUmbralHum = true : entraEnRangoUmbralHum = false;
+    return entraEnRangoUmbralHum;
 }
 // ****************************************************************************************
 void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum)
@@ -39,26 +43,18 @@ void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum)
 // ****************************************************************************************
 void generarAlertas()
 {
-    boolean validacionTemp = validarUmbralTemperatura();
-    boolean validacionHum = validarUmbralHumedad();
-
-    manejadorTipoAlerta(validacionTemp, validacionHum);
-
+    manejadorTipoAlerta(validarUmbralTemperatura(), validarUmbralHumedad());
     switch (tipoAlerta)
     {
     case 0:
-        Serial.println("No se generó ninguna alerta");
         break;
     case 1:
-        Serial.println("Superó temp");
         enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura));
         break;
     case 2:
-        Serial.println("Superó hum");
         enviarMensaje("⚠ ALERTA ⚠\nHumedad [%] = " + String(promedioHumedad));
         break;
     case 3:
-        Serial.println("Superó ambos");
         enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura) + "\nHumedad [%] = " + String(promedioHumedad));
         break;
     }
