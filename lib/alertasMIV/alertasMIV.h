@@ -23,13 +23,13 @@
  * @brief Constante con el límite del umbral de temperatura establecido por
  * la normatividad vigente. Además, considerando la precisión típica del sensor
  */
-extern const float limiteUmbralTemp;
+extern const float LIMITE_UMBRAL_TEMP;
 // ****************************************************************************************
 /**
  * @brief Constante con el límite del umbral de humedad relativa establecido por
  * la normatividad vigente. Además, considerando la precisión típica del sensor
  */
-extern const float limiteUmbralHum;
+extern const float LIMITE_UMBRAL_HUM;
 // ****************************************************************************************
 /**
  * @brief Variable que permite establecer el tipo de alerta que debe generarse

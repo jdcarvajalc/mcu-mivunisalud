@@ -1,24 +1,19 @@
-// ****************************************************************************************
-// Archivo de declaración de variables, constantes y objetos
 #include "alertasMIV.h"
+#include "configMIV.h"
 // ****************************************************************************************
 // Definición y/o invocación de variables, constantes y objetos
-const float limiteUmbralTemp = 27.7;
-const float limiteUmbralHum = 63.0; // 63.0
+const float LIMITE_UMBRAL_TEMP = 27.7;
+const float LIMITE_UMBRAL_HUM = 63.0;
 int tipoAlerta;
 // ****************************************************************************************
 boolean validarUmbralTemperatura()
 {
-    boolean entraEnRangoUmbralTemp;
-    (promedioTemperatura > limiteUmbralTemp) ? entraEnRangoUmbralTemp = true : entraEnRangoUmbralTemp = false;
-    return entraEnRangoUmbralTemp;
+    return promedioTemperatura > LIMITE_UMBRAL_TEMP;
 }
 // ****************************************************************************************
 boolean validarUmbralHumedad()
 {
-    boolean entraEnRangoUmbralHum;
-    (promedioTemperatura > limiteUmbralHum) ? entraEnRangoUmbralHum = true : entraEnRangoUmbralHum = false;
-    return entraEnRangoUmbralHum;
+    return promedioHumedad > LIMITE_UMBRAL_HUM;
 }
 // ****************************************************************************************
 void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum)
@@ -43,19 +38,25 @@ void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum)
 // ****************************************************************************************
 void generarAlertas()
 {
-    manejadorTipoAlerta(validarUmbralTemperatura(), validarUmbralHumedad());
+    boolean validacionTemp = validarUmbralTemperatura();
+    boolean validacionHum = validarUmbralHumedad();
+    manejadorTipoAlerta(validacionTemp, validacionHum);
     switch (tipoAlerta)
     {
     case 0:
+        Serial.println("No se generó ninguna alerta");
         break;
     case 1:
-        enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura));
+        Serial.println("Superó temp");
+        enviarMensaje("⚠ ALERTA ÁREA " + String(identificadorArea) + "⚠\nTemperatura [°C] = " + String(promedioTemperatura));
         break;
     case 2:
-        enviarMensaje("⚠ ALERTA ⚠\nHumedad [%] = " + String(promedioHumedad));
+        Serial.println("Superó hum");
+        enviarMensaje("⚠ ALERTA ÁREA " + String(identificadorArea) + "⚠\nHumedad [%] = " + String(promedioHumedad));
         break;
     case 3:
-        enviarMensaje("⚠ ALERTA ⚠\nTemperatura [°C] = " + String(promedioTemperatura) + "\nHumedad [%] = " + String(promedioHumedad));
+        Serial.println("Superó ambos");
+        enviarMensaje("⚠ ALERTA ÁREA " + String(identificadorArea) + "⚠\nTemperatura [°C] = " + String(promedioTemperatura) + "\nHumedad [%] = " + String(promedioHumedad));
         break;
     }
 }
