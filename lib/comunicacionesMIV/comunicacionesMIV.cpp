@@ -8,7 +8,7 @@ boolean banderaInicioPlaca;
 // ****************************************************************************************
 void conectarWifi()
 {
-    WiFi.begin(ssid, password);
+    WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
     while (WiFi.status() != WL_CONNECTED)
     {
         delay(1);
@@ -24,7 +24,7 @@ void validarReconexionWifi()
     }
     else
     {
-        WiFi.begin(ssid, password);
+        WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
         while (WiFi.status() != WL_CONNECTED && contador < 10000)
         {
             contador++;
@@ -70,7 +70,7 @@ void transmitirDatos()
     {
         Serial.println("Mandando datos");
         HTTPClient https;                                                     // Instancia de cliente HTTPS
-        https.begin(serverURL);                                               // Establecer comunicación con servidor
+        https.begin(WEB_APP_URL);                                             // Establecer comunicación con servidor
         https.addHeader("Content-Type", "application/x-www-form-urlencoded"); // Cabecera de la petición
 
         int httpResponseCode = https.POST(data); // Enviar petición HTTPS de tipo POST

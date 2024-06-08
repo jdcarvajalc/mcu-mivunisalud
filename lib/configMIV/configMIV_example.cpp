@@ -5,9 +5,9 @@
 
 // #include "configMIV.h"
 
-// const char *ssid = "";
-// const char *password = "";
-// const char *serverURL = "";
+// const char *WIFI_SSID = "";
+// const char *WIFI_PASSWORD = "";
+// const char *WEB_APP_URL = "";
 // String phoneNumber = "";
 // String apiKey = "";
 // int identificadorArea = 1;

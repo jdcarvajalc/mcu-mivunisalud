@@ -4,12 +4,12 @@
 #include "configMIV.h"
 // ****************************************************************************************
 // Definición y/o invocación de variables, constantes y objetos
-const int chipSelect = 5;
+const int CHIP_SELECT = 5;
 File archivoDatosPermanentes;
 // ****************************************************************************************
 void iniciarMicroSD()
 {
-    if (!SD.begin(chipSelect))
+    if (!SD.begin(CHIP_SELECT))
     {
         while (1)
             ;

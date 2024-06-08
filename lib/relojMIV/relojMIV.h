@@ -1,11 +1,7 @@
 // ****************************************************************************************
 /**
  * @file relojMIV.h
- * @brief Biblioteca del reloj y gestión del tiempo
- *
- * Esta biblioteca contiene funciones y variables relacionadas con el reloj y el manejo del tiempo,
- * como la obtención de la hora a través de un servidor NTP, la actualización del RTC (Real-Time Clock),
- * y el modo de suspensión (deep sleep).
+ * @brief Biblioteca del reloj y gestión del tiempo.
  */
 // ****************************************************************************************
 #ifndef RELOJ_H
@@ -26,17 +22,17 @@
 /**
  * @brief Dirección del servidor NTP para la sincronización de la hora.
  */
-extern const char *ntpServer;
+extern const char *NTP_SERVER;
 // ****************************************************************************************
 /**
  * @brief Desplazamiento horario en segundos con respecto al horario GMT (Greenwich Mean Time).
  */
-extern const long gmtOffset_sec;
+extern const long GMT_OFFSET_SEC;
 // ****************************************************************************************
 /**
  * @brief Desplazamiento horario en segundos para tener en cuenta el horario de verano.
  */
-extern const int daylightOffset_sec;
+extern const int DAYLIGHT_OFFSET_SEC;
 // ****************************************************************************************
 /**
  * @brief Instancia del objeto RTC (Real-Time Clock) utilizado para el manejo del tiempo.
@@ -60,8 +56,8 @@ extern String timestamp;
 extern void actualizarRTC();
 // ****************************************************************************************
 /**
- * @brief Esta función obtiene la fecha y horas de la captura de los datos de temperatura y
- * humedad relativa, a través del RTC
+ * @brief Este servicio obtiene la fecha y horas de la captura de los datos de temperatura y
+ * humedad relativa, a través del RTC.
  */
 extern void gestionarTiempo();
 // ****************************************************************************************

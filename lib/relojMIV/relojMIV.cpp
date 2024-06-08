@@ -3,15 +3,15 @@
 #include "relojMIV.h"
 // ****************************************************************************************
 // Definición y/o invocación de variables, constantes y objetos
-const char *ntpServer = "pool.ntp.org";
-const long gmtOffset_sec = -5 * 3600;
-const int daylightOffset_sec = 0;
+const char *NTP_SERVER = "pool.ntp.org";
+const long GMT_OFFSET_SEC = -5 * 3600;
+const int DAYLIGHT_OFFSET_SEC = 0;
 String date, timestamp;
 ESP32Time rtc;
 // ****************************************************************************************
 void actualizarRTC()
 {
-  configTime(gmtOffset_sec, daylightOffset_sec, ntpServer);
+  configTime(GMT_OFFSET_SEC, DAYLIGHT_OFFSET_SEC, NTP_SERVER);
   struct tm timeinfo;
   if (getLocalTime(&timeinfo))
   {

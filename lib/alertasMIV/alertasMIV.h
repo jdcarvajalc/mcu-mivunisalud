@@ -4,7 +4,7 @@
  * @brief Esta biblioteca contiene funciones y variables relacionadas con la gestión
  * de alertas del sistema, específicamente para validación de umbrales de temperatura
  * y humedad relativa cuando sea necesario, de forma que la persona responsable
- * pueda actuar de forma preventiva, ante escenarios no deseados
+ * pueda actuar de forma preventiva, ante escenarios no deseados.
  */
 // ****************************************************************************************
 #ifndef ALERTS_H
@@ -66,7 +66,7 @@ extern void manejadorTipoAlerta(boolean validacionTemp, boolean validacionHum);
  * @brief Este servicio valida que la temperatura y humedad relativa,
  * no superen el valor de los umbrales establecidos por la normatividad
  * vigente. Después de realizar la validación, si es el caso, envía los mensajes de alerta
- * respectivos al celular del responsable, de forma que pueda actuar ante la situación
+ * respectivos al celular del responsable, de forma que pueda actuar ante la situación.
  */
 extern void generarAlertas();
 // ****************************************************************************************
