@@ -28,6 +28,6 @@ void gestionarTiempo()
 void esperarSiguienteCiclo()
 {
   WiFi.disconnect();
-  delay(9.9 * 60000); // Tiempo de reposo restando el tiempo de comunicaciones
+  delay(9.85 * 60000); // Tiempo de reposo restando el tiempo de comunicaciones
 }
 // ****************************************************************************************
