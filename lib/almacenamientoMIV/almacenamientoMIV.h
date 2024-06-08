@@ -22,6 +22,8 @@ extern const int CHIP_SELECT;
  * permanentemente.
  */
 extern File archivoDatosPermanentes;
+extern File archivoDatosURL;
+extern File archivoDatosAlerta;
 // ****************************************************************************************
 /**
  * @brief Esta función inicializa la comunicación de la MCU con el módulo micro SD

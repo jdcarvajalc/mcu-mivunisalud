@@ -5,7 +5,7 @@
 // ****************************************************************************************
 // Definición y/o invocación de variables, constantes y objetos
 const int CHIP_SELECT = 5;
-File archivoDatosPermanentes;
+File archivoDatosPermanentes, archivoDatosURL, archivoDatosAlerta;
 bool sdIniciada = false;
 // ****************************************************************************************
 void iniciarMicroSD()
@@ -52,8 +52,30 @@ void almacenarDatosLocalmente()
 // ****************************************************************************************
 void almacenarAlertaFallida(String mensaje)
 {
+    if (!sdIniciada)
+    {
+        return;
+    }
+    archivoDatosAlerta = SD.open("/alertas_fallidas.txt", FILE_APPEND);
+    if (!archivoDatosAlerta)
+    {
+        return;
+    }
+    archivoDatosAlerta.println(mensaje);
+    archivoDatosAlerta.close();
 }
 // ****************************************************************************************
 void almacenarTransmisionFallida(String data)
 {
+    if (!sdIniciada)
+    {
+        return;
+    }
+    archivoDatosURL = SD.open("/transmision_fallida.txt", FILE_APPEND);
+    if (!archivoDatosURL)
+    {
+        return;
+    }
+    archivoDatosURL.println(data);
+    archivoDatosURL.close();
 }
