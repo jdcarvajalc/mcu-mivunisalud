@@ -1,6 +1,7 @@
 // ****************************************************************************************
 // Archivo de declaración de variables, constantes y objetos
 #include "comunicacionesMIV.h"
+#include "almacenamientoMIV.h"
 #include "configMIV.h"
 // ****************************************************************************************
 // Definición y/o invocación de variables, constantes y objetos
@@ -35,10 +36,11 @@ void validarReconexionWifi()
 // ****************************************************************************************
 void enviarMensaje(String mensaje)
 {
+    // Datos a enviar
+    String url = "https://api.callmebot.com/whatsapp.php?phone=" + phoneNumber + "&apikey=" + apiKey + "&text=" + urlEncode(mensaje);
+
     if (WiFi.status() == WL_CONNECTED)
     {
-        // Datos a enviar
-        String url = "https://api.callmebot.com/whatsapp.php?phone=" + phoneNumber + "&apikey=" + apiKey + "&text=" + urlEncode(mensaje);
         HTTPClient http;
         http.begin(url); // Establecer comunicación con API
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -48,11 +50,15 @@ void enviarMensaje(String mensaje)
         Serial.println(httpResponseCode);
         if (httpResponseCode != 200)
         {
-            // almacenarAlertaFallida();
+            almacenarAlertaFallida(url);
         }
 
         // Liberar recursos
         http.end();
+    }
+    else
+    {
+        almacenarAlertaFallida(url);
     }
 }
 // ****************************************************************************************
@@ -76,7 +82,7 @@ void transmitirDatos()
         int httpResponseCode = https.POST(data); // Enviar petición HTTPS de tipo POST
         if (httpResponseCode != 200)
         {
-            // almacenarTransmisionFallida(data);
+            almacenarTransmisionFallida(data);
         }
         https.end(); // Liberar recursos
 
@@ -84,7 +90,7 @@ void transmitirDatos()
     }
     else
     {
-        // almacenarTransmisionFallida(data);
+        almacenarTransmisionFallida(data);
         esperarSiguienteCiclo();
     }
 }

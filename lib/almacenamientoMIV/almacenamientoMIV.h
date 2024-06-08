@@ -30,6 +30,20 @@ extern File archivoDatosPermanentes;
 extern void iniciarMicroSD();
 // ****************************************************************************************
 /**
+ * @brief Esta función almacena el mensaje que no pudo enviarse.
+ *
+ * @param [in] mensaje: Mensaje de alerta que no puedo ser transmitido al responsable
+ */
+extern void almacenarAlertaFallida(String mensaje);
+// ****************************************************************************************
+/**
+ * @brief Esta función almacena la url de la transmisión fallida.
+ *
+ * @param [in] data: Url de los datos para el método POST
+ */
+extern void almacenarTransmisionFallida(String data);
+// ****************************************************************************************
+/**
  * @brief Este servicio almacena en la tarjeta microSD los datos de área, temperatura,
  * humedad relativa, fecha y marca temporal. Garantizando disponibilidad y completitud
  * de los datos, sirviendo como respaldo por si la comunicación con la aplicación web falla.
