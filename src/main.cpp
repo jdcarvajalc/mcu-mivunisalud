@@ -15,16 +15,13 @@ void setup()
   iniciarSensor();
   iniciarMicroSD();
   actualizarRTC();
-  Serial.println("pasé setup");
 }
 
 void loop()
 {
   capturarYGestionarDatos();
-  Serial.println("pasé captura datos");
   gestionarTiempo();
-  Serial.println("pasé gestión tiempo");
   almacenarDatosLocalmente();
-  generarAlertas();  // TODO: almacenar la alerta en microSD para enviarla si no fue enviada con callmebot
-  transmitirDatos(); // TODO: almacenar URL transmisión fallida
+  generarAlertas();
+  transmitirDatos();
 }
