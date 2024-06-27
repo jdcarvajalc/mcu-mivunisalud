@@ -44,18 +44,14 @@ void generarAlertas()
     switch (tipoAlerta)
     {
     case 0:
-        Serial.println("No se generó ninguna alerta");
         break;
     case 1:
-        Serial.println("Superó temp");
         enviarMensaje("⚠ ALERTA ÁREA " + String(identificadorArea) + "⚠\nTemperatura [°C] = " + String(promedioTemperatura));
         break;
     case 2:
-        Serial.println("Superó hum");
         enviarMensaje("⚠ ALERTA ÁREA " + String(identificadorArea) + "⚠\nHumedad [%] = " + String(promedioHumedad));
         break;
     case 3:
-        Serial.println("Superó ambos");
         enviarMensaje("⚠ ALERTA ÁREA " + String(identificadorArea) + "⚠\nTemperatura [°C] = " + String(promedioTemperatura) + "\nHumedad [%] = " + String(promedioHumedad));
         break;
     }

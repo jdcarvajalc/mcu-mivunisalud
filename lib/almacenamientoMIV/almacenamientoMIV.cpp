@@ -42,11 +42,11 @@ void almacenarDatosLocalmente()
     archivoDatosPermanentes = SD.open("/datos_permanentes.txt", FILE_APPEND);
     if (!archivoDatosPermanentes)
     {
+        validarReconexionWifi();
         return;
     }
     archivoDatosPermanentes.println(datosAlmacenar);
     archivoDatosPermanentes.close();
-    Serial.println("Almacene permanente");
     validarReconexionWifi();
 }
 // ****************************************************************************************

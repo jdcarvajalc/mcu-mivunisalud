@@ -47,7 +47,6 @@ void enviarMensaje(String mensaje)
 
         // Enviar petición HTTP de tipo POST
         int httpResponseCode = http.POST(url);
-        Serial.println(httpResponseCode);
         if (httpResponseCode != 200)
         {
             almacenarAlertaFallida(url);
@@ -74,7 +73,6 @@ void transmitirDatos()
 
     if (WiFi.status() == WL_CONNECTED)
     {
-        Serial.println("Mandando datos");
         HTTPClient https;                                                     // Instancia de cliente HTTPS
         https.begin(WEB_APP_URL);                                             // Establecer comunicación con servidor
         https.addHeader("Content-Type", "application/x-www-form-urlencoded"); // Cabecera de la petición
